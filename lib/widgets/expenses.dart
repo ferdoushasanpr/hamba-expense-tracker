@@ -3,6 +3,7 @@ import "package:hambaexpense/models/expense.dart";
 
 import "package:hambaexpense/widgets/expenses_list/expenses_list.dart";
 import 'package:hambaexpense/widgets/new_expense.dart';
+import 'package:hambaexpense/widgets/chart/chart.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
@@ -49,6 +50,7 @@ class ExpensesState extends State<Expenses> {
   Widget build(BuildContext context) {
     void openAddExpenseOverlay() {
       showModalBottomSheet(
+        useSafeArea: true,
         isScrollControlled: true,
         context: context,
         builder: (ctx) {
@@ -59,16 +61,25 @@ class ExpensesState extends State<Expenses> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hamba Expense Tracker"),
+        title: Text(
+          "Hamba Expense Tracker",
+          style: TextStyle(color: Colors.white70),
+        ),
+        backgroundColor: Colors.deepPurple,
         actions: [
-          IconButton(onPressed: openAddExpenseOverlay, icon: Icon(Icons.add)),
+          IconButton(
+            onPressed: openAddExpenseOverlay,
+            icon: Icon(Icons.add),
+            color: Colors.white70,
+          ),
         ],
       ),
       body: Container(
+        color: const Color.fromARGB(255, 222, 210, 255),
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            Text("The Chart"),
+            Chart(expenses: _registeredExpenses),
             Expanded(
               child: ExpensesList(
                 expenses: _registeredExpenses,

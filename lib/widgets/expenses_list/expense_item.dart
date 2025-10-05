@@ -10,19 +10,30 @@ class ExpenseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: const Color.fromARGB(255, 124, 93, 177),
       child: Container(
         padding: EdgeInsets.all(8),
         child: Column(
           children: [
-            Text(expense.title),
+            Text(expense.title, style: TextStyle(color: Colors.white70)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("\$${expense.amount.toStringAsFixed(2)}"),
+                Text(
+                  "\$${expense.amount.toStringAsFixed(2)}",
+                  style: TextStyle(color: Colors.white70),
+                ),
                 Row(
                   children: [
-                    Icon(categoryIcons[expense.category]),
-                    Text(expense.formattedDate),
+                    Icon(
+                      categoryIcons[expense.category],
+                      color: Colors.white70,
+                    ),
+                    SizedBox(width: 6),
+                    Text(
+                      expense.formattedDate,
+                      style: TextStyle(color: Colors.white70),
+                    ),
                   ],
                 ),
               ],
